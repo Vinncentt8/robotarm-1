@@ -11,7 +11,14 @@
             robotArm.loadLevel("exercise 3");
             
             // Jou instructies volgen hier
-            
+              for ( j= 0; j < 4; j++){
+                robotArm.grab();
+                robotArm.moveRight();
+                robotArm.drop();
+                robotArm.moveLeft();
+                
+                
+            }
             // De door jou opgegeven instructies uitvoeren
             robotArm.run();
             for ( j= 0; j < 4; j++){
