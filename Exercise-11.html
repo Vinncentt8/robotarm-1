@@ -1,0 +1,47 @@
+<html>
+    <body>
+        <canvas id="canvas" width="800" height="600"></canvas>
+        <script src="./robot-arm.js"></script>
+        <script>
+            // Robotarm bibliotheek inladen
+            var canvas = document.getElementById("canvas");
+            var robotArm = new RobotArm(canvas);
+            
+            // Het level inladen
+            robotArm.loadLevel("exercise 12");
+            
+            // Jou instructies volgen hier
+            for(var j=9; j > 0; j--)/* de var 9 staat voor de stapjes naar rechts om bij de meest rechter kolom terecht te komen. de -- telt steeds eentje af.*/
+            {
+                 robotArm.grab();
+                if(robotArm.scan() == "red")
+                {
+                    for(var k = 0; k < j; k++) /* Deze for loop gaat het aantal stapjes van de 9 (j) naar rechts*/
+                    {
+                         robotArm.moveRight();
+                    }
+                    robotArm.drop();
+                    for(var z = 0; z < (j-1); z++) /* deze for loop gaat het zelfde aantal stapjes, dat eerst naar rechts is gezet, -1 weer naar links. hij trekt er hier eentje vanaf dat hij eentje verder naar rechts eindigd.*/
+                    {
+                        robotArm.moveLeft();
+                    }
+                }
+               else
+               {
+                    robotArm.drop();
+                    robotArm.moveRight();
+                }
+            
+            }
+ 
+            
+
+        
+               
+            
+
+             // De door jou opgegeven instructies uitvoeren
+            robotArm.run();
+        </script>
+    </body>
+</html>
